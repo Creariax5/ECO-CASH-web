@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cannes Éco-Cash - Voyagez futé, consommez engagé, économisez sans compter !</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0E7C33;
+            --primary-light: #2ECC71;
+            --primary-dark: #0B5D27;
+            --secondary-color: #FFD700;
+            --secondary-dark: #F1C40F;
+            --light-color: #F8FFF8;
+            --dark-color: #1E1E1E;
+            --gray-color: #F5F5F5;
+            --text-color: #333333;
+            --text-light: #777777;
+            --white-color: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: var(--white-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: transparent;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        header.scrolled {
+            background-color: var(--white-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            color: var(--white-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled .logo {
+            color: var(--primary-color);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        header.scrolled .nav-links a {
+            color: var(--text-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .btn-mobile-menu {
+            display: none;
+            color: var(--white-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        header.scrolled .btn-mobile-menu {
+            color: var(--text-color);
+        }
+        
+        .hero {
+            background: linear-gradient(to right, rgba(14, 124, 51, 0.9), rgba(46, 204, 113, 0.8)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding-top: 60px;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+            color: var(--white-color);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white-color);
+            border: 2px solid var(--white-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-light {
+            background-color: var(--white-color);
+        }
+        
+        .section-dark {
+            background-color: var(--gray-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-weight: 400;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            top: 0;
+            left: 0;
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+        
+        .feature-card:hover:before {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background-color: var(--primary-color);
+            transform: rotateY(360deg);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .feature-text {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .how-it-works {
+            position: relative;
+        }
+        
+        .how-it-works:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/900');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .step-card {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-top: 10px;
+            color: var(--primary-color);
+        }
+        
+        .step-text {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .partners {
+            text-align: center;
+        }
+        
+        .partner-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .partner-category {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 40px 25px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .partner-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-category:hover .partner-icon {
+            background-color: var(--primary-color);
+        }
+        
+        .partner-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .partner-list {
+            list-style: none;
+        }
+        
+        .partner-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-list li:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .partner-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefits:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('/api/placeholder/800/1200');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .benefit-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+        
+        .benefit-card:hover:after {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            background-color: var(--primary-color);
+            transform: rotate(360deg);
+        }
+        
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .benefit-text {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .app-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--white-color);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .app-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .app-content {
+            width: 50%;
+            padding-right: 50px;
+        }
+        
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .app-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .app-button {
+            display: flex;
+            align-items: center;
+            background-color: var(--white-color);
+            color: var(--text-color);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .app-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .app-button-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .app-button-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .app-button-small {
+            font-size: 0.7rem;
+            font-weight: 400;
+        }
+        
+        .app-button-large {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .app-mockup {
+            width: 45%;
+            position: relative;
+        }
+        
+        .mockup-phone {
+            width: 300px;
+            border-radius: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 10px solid var(--white-color);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .mockup-bg {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 80px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-light);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: #bbb;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--primary-light);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white-color);
+            padding-left: 5px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            color: var(--primary-light);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text {
+            color: #bbb;
+            line-height: 1.5;
+        }
+        
+        .newsletter {
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .app-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-content, .app-mockup {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .app-content {
+                margin-bottom: 50px;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+            
+            .mockup-phone {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--white-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .nav-links a {
+                color: var(--text-color);
+                font-size: 1.2rem;
+            }
+            
+            .btn-mobile-menu {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .app-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fas fa-leaf"></i></span>
+                <span>ÉCO-CASH</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#how-it-works">Comment ça marche</a></li>
+                <li><a href="#partners">Partenaires</a></li>
+                <li><a href="#benefits">Avantages</a></li>
+                <li><a href="#app">Application</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="btn-mobile-menu" id="btn-mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Cannes Éco-Cash</h1>
+                <p class="hero-subtitle">Voyagez futé, consommez engagé, économisez sans compter ! Une monnaie verte pour un tourisme responsable à Cannes.</p>
+                <div class="btn-group">
+                    <a href="#app" class="btn btn-primary">Télécharger l'App</a>
+                    <a href="#how-it-works" class="btn btn-secondary">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="concept" class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Notre Concept</h2>
+                <p class="section-subtitle">Une monnaie numérique locale et verte, spécialement conçue pour encourager les touristes et les habitants à adopter des pratiques écoresponsables tout en soutenant l'économie locale.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Écoresponsable</h3>
+                    <p class="feature-text">Récompenser les comportements écologiques des visiteurs et encourager un tourisme responsable sans impacter l'attractivité de la ville.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="feature-title">Économie Locale</h3>
+                    <p class="feature-text">Soutenir les artisans, commerçants et restaurateurs locaux engagés dans une démarche durable et favoriser les circuits courts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="feature-title">Récompenses</h3>
+                    <p class="feature-text">Gagner des Éco-Coins en adoptant des pratiques durables et les dépenser chez nos partenaires locaux pour des réductions et avantages exclusifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section section-dark how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comment ça fonctionne</h2>
+                <p class="section-subtitle">Gagner et dépenser des Éco-Coins, c'est simple et ludique !</p>
+            </div>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Créez votre portefeuille numérique</h3>
+                    <p class="step-text">Téléchargez l'application mobile ou récupérez une carte rechargeable dans les points d'accueil touristiques pour commencer à collecter des Éco-Coins.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Gagnez des Éco-Coins</h3>
+                    <p class="step-text">Adoptez des comportements écoresponsables : utilisez les transports en commun, achetez local, participez à des activités vertes, et voyez vos Éco-Coins s'accumuler !</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Dépensez vos récompenses</h3>
+                    <p class="step-text">Utilisez vos Éco-Coins comme moyen de paiement ou pour obtenir des réductions chez nos partenaires locaux engagés dans la démarche durable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="section section-light partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Partenaires</h2>
+                <p class="section-subtitle">Une sélection de commerces, restaurants et activités écoresponsables à Cannes</p>
+            </div>
+            <div class="partner-categories">
+                <div class="partner-category">
+                    <div class="partner-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3 class="partner-title">Commerces & Artisans</h3>
+                    <ul class="partner-list">
+                        <li>Marché Forville</li>
+                        <li>Maison Ladurée Cannes</li>
+                        <li>Concept Store "Cannes Je t'aime"</li>
+                        <li>Bijouterie OR'Normes</li>
+                    </ul>
+                </div>
+                <div class="partner-category">
+                    <div class="partner-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="partner-title">Restaurants & Cafés</h3>
+                    <ul class="partner-list">
+                        <li>La Brouette de Grand-Mère</li>
+                        <li>Le Bistrot Gourmand</li>
+                        <li>Maison Charlotte Busset</li>
+                        <li>Café Organic</li>
+                    </ul>
+                </div>
+                <div class="partner-category">
+                    <div class="partner-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <h3 class="partner-title">Mobilité Verte</h3>
+                    <ul class="partner-list">
+                        <li>Palm Bus</li>
+                        <li>Vélo Bleu Cannes</li>
+                        <li>Trottinettes électriques Lime</li>
+                        <li>SNCF (trajets régionaux)</li>
+                    </ul>
+                </div>
+                <div class="partner-category">
+                    <div class="partner-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="partner-title">Culture & Loisirs</h3>
+                    <ul class="partner-list">
+                        <li>Palais des Festivals et des Congrès</li>
+                        <li>Musée des Explorations du Monde</li>
+                        <li>Cinéma Les Arcades</li>
+                        <li>Centre d'Art La Malmaison</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section section-dark benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vos Avantages</h2>
+                <p class="section-subtitle">Un système qui profite à tous</p>
+            </div>
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="benefit-title">Pour les touristes</h3>
+                    <p class="benefit-text">Une expérience de voyage plus immersive et responsable avec des réductions et avantages sur des activités locales.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-store-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Pour l'économie locale</h3>
+                    <p class="benefit-text">Un soutien direct aux commerces cannois et aux producteurs locaux avec une meilleure visibilité des établissements engagés.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <h3 class="benefit-title">Pour l'environnement</h3>
+                    <p class="benefit-text">Moins d'émissions de CO₂, moins de déchets et une meilleure préservation du littoral et des espaces naturels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="app-section">
+        <div class="app-container">
+            <div class="app-content">
+                <h2 class="app-title">Notre Application</h2>
+                <p class="app-text">Découvrez notre application mobile intuitive et commencez dès aujourd'hui à gagner des Éco-Coins ! Localisez les commerces partenaires, suivez vos gains et profitez de réductions exclusives dans toute la ville de Cannes.</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-button">
+                        <div class="app-button-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <div class="app-button-text">
+                            <span class="app-button-small">Télécharger sur</span>
+                            <span class="app-button-large">App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="app-button">
+                        <div class="app-button-icon">
+                            <i class="fab fa-google-play"></i>
+                        </div>
+                        <div class="app-button-text">
+                            <span class="app-button-small">Télécharger sur</span>
+                            <span class="app-button-large">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-bg"></div>
+                <img src="/api/placeholder/300/600" alt="Application Éco-Cash sur smartphone" class="mockup-phone">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-column footer-about">
+                <h3>À propos d'Éco-Cash</h3>
+                <p>Une monnaie verte qui transforme chaque visiteur en acteur du changement pour un tourisme plus durable à Cannes.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liens Rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="#concept"><i class="fas fa-angle-right"></i> Notre Concept</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-angle-right"></i> Comment ça marche</a></li>
+                    <li><a href="#partners"><i class="fas fa-angle-right"></i> Partenaires</a></li>
+                    <li><a href="#benefits"><i class="fas fa-angle-right"></i> Avantages</a></li>
+                    <li><a href="#app"><i class="fas fa-angle-right"></i> Application</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        cannesisup@gmail.com
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        Cannes, France
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        +33 (0)4 XX XX XX XX
+                    </div>
+                </div>
+                <div class="newsletter">
+                    <p>Inscrivez-vous à notre newsletter</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Votre email">
+                        <button type="submit" class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Partenaires</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Ville de Cannes</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Office de Tourisme</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Association des Commerçants</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Devenir Partenaire</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Cannes Éco-Cash. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const btnMobileMenu = document.getElementById('btn-mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        btnMobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            btnMobileMenu.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                btnMobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
